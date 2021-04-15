@@ -4,9 +4,7 @@ const { Task } = require('../models');
 module.exports.createTask = async (req, res, next) => {
   try {
     const { body } = req;
-    console.log('START at',  new Date());
     const task = await Task.create(body);
-    console.log(task);
 
     if (!task) {
       return next(createError(400, "Task can't be create"));
