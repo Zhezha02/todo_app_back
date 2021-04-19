@@ -44,7 +44,7 @@ module.exports.getTasks = async (req, res, next) => {
       return next(createError(404, 'Tasks not found'));
     }
 
-    res.send(tasks);
+    res.send({data:tasks});
   } catch (err) {
     next(err);
   }
@@ -63,7 +63,7 @@ module.exports.updateTask = async (req, res, next) => {
     });
 
     if (affectedRows !== 1) {
-      return next(createError(400, "Task can't be updated"));
+      return next(createError(404, "Task not found"));
     }
 
     res.send({ data: updatedTask });
